@@ -1,0 +1,17 @@
+server:
+  port: 10110
+spring:
+  application:
+    name: db-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+#配置路由
+zuul:
+  routes:
+    service-consumer: /service-consumer/**
+  #    service-provider: /TbItem/**
+  #需要忽略的头部信息，不在传播到其他服务
+  sensitive-headers: Access-Control-Allow-Origin
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
